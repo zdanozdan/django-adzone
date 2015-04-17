@@ -1,15 +1,16 @@
 {% comment %}
     A instance of AdBase is passed to this tag.
 {% endcomment %}
-
 {% if ad.textad %}
-    <div class="ad_text">
+    <div class="adzone_ad_text">
         <p><a target="_blank" href="{{ ad.get_absolute_url }}">{{ ad.textad.content }}</a></p>
     </div>
 {% endif %}
 
+
 {% if ad.bannerad %}
-    <div class="ad_banner">
+    <div class="adzone_ad_banner">
+	{{ad.bannerad.content.url}}
         <a target="_blank" href="{{ ad.get_absolute_url }}"><img src="{{ ad.bannerad.content.url }}" alt="{{ ad.title }}" /></a>
     </div>
 {% endif %}
