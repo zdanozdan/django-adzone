@@ -18,12 +18,13 @@ class AdManager(models.Manager):
         and ``ad_zone``.
         If ``ad_category`` is None, the ad will be category independent.
         """
-        qs = self.get_queryset().filter(start_showing__lte=now(),
+        qs = self.get_query_set().filter(start_showing__lte=now(),
                                          stop_showing__gte=now(),
                                          zone__slug=ad_zone,
                                          sites=Site.objects.get_current().pk
                                          ).select_related('textad',
                                                           'bannerad')
+
         if ad_category:
             qs = qs.filter(category__slug=ad_category)
         try:
