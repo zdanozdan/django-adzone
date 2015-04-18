@@ -155,4 +155,5 @@ class TextAd(AdBase):
 class BannerAd(AdBase):
     """ A standard banner Ad """
     content = models.ImageField(
-        verbose_name=_(u'Content'), upload_to="adzone/bannerads/")
+        verbose_name=_(u'Content'), upload_to="enduzone/banner/")
+    
