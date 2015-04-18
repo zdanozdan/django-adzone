@@ -35,14 +35,17 @@ def random_zone_ad(context, ad_zone):
     to_return['ad'] = ad
 
     # Record a impression for the ad
-    if 'from_ip' in context and ad:
-        from_ip = context.get('from_ip')
-        try:
-            impression = AdImpression(
-                ad=ad, impression_date=datetime.now(), source_ip=from_ip)
-            impression.save()
-        except:
-            pass
+    # Endu - do not need this for the moment - just count clicks,
+    # impresions 
+    #if 'from_ip' in context and ad:
+    #    from_ip = context.get('from_ip')
+    #    try:
+    #        impression = AdImpression(
+    #            ad=ad, impression_date=datetime.now(), source_ip=from_ip)
+    #        impression.save()
+    #    except:
+    #        pass
+
     return to_return
 
 
@@ -63,12 +66,13 @@ def random_category_ad(context, ad_zone, ad_category):
     to_return['ad'] = ad
 
     # Record a impression for the ad
-    if 'from_ip' in context and ad:
-        from_ip = context.get('from_ip')
-        try:
-            impression = AdImpression(
-                ad=ad, impression_date=datetime.now(), source_ip=from_ip)
-            impression.save()
-        except:
-            pass
+    #if 'from_ip' in context and ad:
+    #    from_ip = context.get('from_ip')
+    #    try:
+    #        impression = AdImpression(
+    #            ad=ad, impression_date=datetime.now(), source_ip=from_ip)
+    #        impression.save()
+    #    except:
+    #        pass
+
     return to_return
