@@ -1,0 +1,11 @@
+<ul class="thumbnails" style="margin-left:30px">
+{% for ad in ads %}
+{% if ad.bannerad %}
+<li class="span4">
+    <a target="_blank" href="{{ad.get_absolute_url}}" class="thumbnail">
+        <img src="{{ ad.bannerad.content.url }}" alt="{{ad.title}}">
+    </a>
+</li>
+{% endif %}
+{% endfor %}
+</ul>
