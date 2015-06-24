@@ -11,6 +11,15 @@ from adzone.models import AdBase, AdImpression
 
 register = template.Library()
 
+@register.inclusion_tag('adzone/all_ads_tag.html', takes_context=True)
+def all_ads(context):
+    to_return = {}
+
+    # Retrieve a random ad for the zone
+    ads = AdBase.objects.all()
+    to_return['ads'] = ads
+
+    return to_return
 
 @register.inclusion_tag('adzone/ad_tag.html', takes_context=True)
 def random_zone_ad(context, ad_zone):
