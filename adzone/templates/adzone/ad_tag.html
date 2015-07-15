@@ -2,14 +2,14 @@
     A instance of AdBase is passed to this tag.
 {% endcomment %}
 {% if ad.textad %}
-    <div class="enduzone_text">
+    <div class="enduzone_text {{ad_zone}}">
         <p><a target="_blank" href="{{ ad.get_absolute_url }}">{{ ad.textad.content }}</a></p>
     </div>
 {% endif %}
 
 
 {% if ad.bannerad %}
-    <div class="enduzone_banner">
+    <div class="enduzone_banner {{ad_zone}}">
         <a target="_blank" href="{{ ad.get_absolute_url }}"><img src="{{ ad.bannerad.content.url }}" alt="{{ ad.title }}" /></a>
     </div>
 {% endif %}
