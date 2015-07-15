@@ -42,6 +42,7 @@ def random_zone_ad(context, ad_zone):
     # Retrieve a random ad for the zone
     ad = AdBase.objects.get_random_ad(ad_zone)
     to_return['ad'] = ad
+    to_return['ad_zone'] = ad_zone
 
     # Record a impression for the ad
     # Endu - do not need this for the moment - just count clicks,
