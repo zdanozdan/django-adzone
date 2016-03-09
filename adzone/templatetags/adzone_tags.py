@@ -74,6 +74,7 @@ def random_category_ad(context, ad_zone, ad_category):
     # Retrieve a random ad for the category and zone
     ad = AdBase.objects.get_random_ad(ad_zone, ad_category)
     to_return['ad'] = ad
+    to_return['ad_zone'] = ad_zone
 
     # Record a impression for the ad
     #if 'from_ip' in context and ad:
