@@ -30,8 +30,9 @@ def ad_view(request, id):
     click.save()
 
     redirect_url = ad.url
-    if not redirect_url.startswith('http://'):
-        # Add http:// to the url so that the browser redirects correctly
-        redirect_url = 'http://' + redirect_url
+
+    #if not redirect_url.startswith('http://'):
+    # Add http:// to the url so that the browser redirects correctly
+    #    redirect_url = 'http://' + redirect_url
 
     return HttpResponseRedirect(redirect_url)
