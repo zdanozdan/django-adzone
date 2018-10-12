@@ -1,17 +1,20 @@
-<div class="container">
-    <ul class="thumbnails">	
-	<div class="row">
-	    {% for ad in ads %}
-		{% if ad.bannerad %}
-		    <li class="span4">
-			<a target="_blank" href="{{ad.get_absolute_url}}" class="thumbnail">
-			    <img src="{{ ad.bannerad.content.url }}" alt="{{ad.title}}">
-			</a>
-		    </li>
-		    <!-- should be done better - this span thing sucks,just need stupid list -->
-		    {% if forloop.counter0|add:"1"|divisibleby:3 %}</div><div class="row">{% endif %}
-		{% endif %}
-	    {% endfor %}
-	</div>
-    </ul>
+<div class="slider_container greyscale centered">
+  <div id="myCarousel" class="carousel slide" data-interval="2000">
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+      {% for ad in ads %}
+      {% if ad.bannerad %}
+      <div class="item {% if forloop.counter0 == 1 %}active{% endif %}">
+	<a target="_blank" href="{{ad.get_absolute_url}}" class="thumbnail">
+	  <img src="{{ ad.bannerad.content.url }}" alt="{{ad.title}}">
+	</a>
+      </div>    
+      {% endif %}
+      {% endfor %}
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+  </div>
 </div>
+
