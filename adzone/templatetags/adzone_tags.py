@@ -22,6 +22,32 @@ def all_ads(context):
     return to_return
 
 @register.inclusion_tag('adzone/ad_tag.html', takes_context=True)
+def next_zone_ad(context, ad_zone):
+    """
+    Tag usage:
+    {% load adzone_tags %}
+    {% next_zone_ad 'zone_slug' %}
+    """
+    to_return = {}
+
+    request = context['request']
+    try:
+        zone_ad_id = int(request.session['_zone_ad_id'])
+        ad = AdBase.objects.get_next_ad(ad_zone,zone_ad_id=zone_ad_id)
+    except:
+        ad = AdBase.objects.get_first_ad(ad_zone)
+
+    try:
+        request.session['_zone_ad_id'] = ad.pk
+    except:
+        pass
+
+    to_return['ad'] = ad
+    to_return['ad_zone'] = ad_zone
+
+    return to_return        
+
+@register.inclusion_tag('adzone/ad_tag.html', takes_context=True)
 def random_zone_ad(context, ad_zone):
     """
     Returns a random advert for ``ad_zone``.
@@ -57,7 +83,6 @@ def random_zone_ad(context, ad_zone):
     #        pass
 
     return to_return
-
 
 @register.inclusion_tag('adzone/ad_tag.html', takes_context=True)
 def random_category_ad(context, ad_zone, ad_category):
